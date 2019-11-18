@@ -2,6 +2,7 @@
 Zhongrui Wang: 466311
 
 # Grading Rubric:
+Checked by Jeong Min Lim
 
 ## Rubric turned in on time (5 points)<br/>
 Creating a rubric and uploading it to Github on time. Make sure TA check out rubric<br/>
@@ -27,6 +28,6 @@ Creating a rubric and uploading it to Github on time. Make sure TA check out rub
 3 - Code is readable and well formatted with proper commenting<br/>
 2 - All pages pass the html validator<br/>
 ## Creative Portion (20 points)<br/>
-10 - Add Google Account Login<br/>
-10 - Search products <br/>
+Add Google Account Login<br/>
+Search products <br/>
 
