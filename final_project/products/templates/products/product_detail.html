@@ -1,0 +1,44 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+
+<div class="container my-5">
+
+	
+<div class="card">
+	<div class="row">
+		<aside class="col-sm-5 border-right">
+        <article class="gallery-wrap"> 
+        <div class="img-big-wrap">
+            <div> <a><img src="/media/{{ object.mainimage }}" style="width: 450px"></a></div>
+        </div> 
+        </article> 
+		</aside>
+		<aside class="col-sm-7">
+            <article class="card-body p-5">
+                <h3 class="title mb-4">{{ object.name }}</h3>
+                
+                <div class="price-wrap h4">
+                        <span class="price-new">${{product.price}}</span>
+                        {% if product.price != product.original_price %}
+                          <del class="price-old">${{product.original_price}}</del>
+                        {% endif %}
+                </div>
+                <dl class="item-property mt-3">
+                <dt>Description</dt>
+                <dd><p>{{ object.detail_text }}</p></dd>
+                </dl> 
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'mainapp:cart' object.slug %}" class="btn btn-outline-success btn-lg text-uppercase"> <i class="fas fa-shopping-bag"></i> Add to cart </a>
+                    <a href="{% url 'checkout:index' %}" class="btn btn-outline-success btn-lg text-uppercase"> <i class="far fa-credit-card"></i> Proceed to check out </a>
+                {% else %}
+                    <a href="/accounts/login/" class="btn btn-outline-success btn-lg text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+                {% endif %}
+            </article> 
+        </aside> 
+    </div> 
+</div>
+                    
+                    
+</div>
+{% endblock %}

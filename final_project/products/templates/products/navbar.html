@@ -1,0 +1,51 @@
+{% load cart_tag %}
+<!-- reference from https://stackoverflow.com/questions/41513463/bootstrap-4-align-navbar-items-to-the-right -->
+<!-- reference from https://www.codeply.com/go/kTGlK9Axdk -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container">
+  <a class="navbar-brand" href="/">Men's Store</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+            
+      <li {% if request.path == 'contact' %}class="nav-item active"{% else %}class="nav-item"{% endif %}>
+        <a class="nav-link" href="{% url 'mainapp:coatsjackets' %}">Coats & Jackets<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'mainapp:shirtssweatshirts' %}">Shirts & Sweatshirts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'mainapp:pantsshorts' %}">Pants & Shorts</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'mainapp:shoes' %}">Shoes</a>
+      </li>
+      <li class="nav-item">
+            <a class="nav-link" href="{% url 'mainapp:bags' %}">Bags</a>
+        </li>
+        
+      {% if request.user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'mainapp:cart-home' %}">
+          <i class="fa fa-shopping-bag"></i> Cart</a>
+      </li>
+      <li class="nav-item">
+            <!-- <a class="nav-link" href="/accounts/logout/"> Log out</a> -->
+            <a  class="nav-link" href="/accounts/logout/"> Log out</a>
+          </li>
+      {% else %}
+       <li class="nav-item">
+        <a  class="nav-link" href="/accounts/login/"> Login / Register</a>
+      </li>
+      {% endif %}
+      <form class="form-inline" action="{% url 'mainapp:search' %}" method="get">
+            <input class="form-control mr-sm-2" name="q" type="text"  placeholder="Search" aria-label="Search"> 
+            <button class="btn btn-success " type="submit">Search</button>
+            <!-- type="search" -->
+          </form>
+    </ul>
+  </div>
+  </div>
+</nav>
